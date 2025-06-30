@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cspookngc1ycl"]
+
+[ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
+
+[sub_resource type="Gradient" id="Gradient_0xm2m"]
+colors = PackedColorArray(0, 0, 0.470588, 1, 0, 0.772549, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2yge"]
+gradient = SubResource("Gradient_0xm2m")
+fill_from = Vector2(0.527523, 0)
+fill_to = Vector2(0.5, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Menu" type="Node" parent="."]
+
+[node name="Game" type="Node" parent="."]
+
+[node name="CanonBase" type="Sprite2D" parent="Game"]
+z_index = 1
+texture_filter = 1
+position = Vector2(105, 105)
+texture = ExtResource("1_bo1nx")
+
+[node name="CanonHead" type="Sprite2D" parent="Game"]
+texture_filter = 1
+position = Vector2(105, 113)
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_8gbba")
+offset = Vector2(0, -7.99999)
+
+[node name="Marker2D" type="Marker2D" parent="Game/CanonHead"]
+position = Vector2(0, -5.33333)
+scale = Vector2(1, 1.33333)
+
+[node name="Camera2D" type="Camera2D" parent="Game"]
+position = Vector2(104, 56)
+zoom = Vector2(5.68, 5.68)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Game"]
+z_index = -1
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 205.0
+offset_bottom = 113.0
+texture = SubResource("GradientTexture2D_h2yge")
+metadata/_edit_lock_ = true
