@@ -45,7 +45,6 @@ position = Vector2(128, 72)
 zoom = Vector2(7.495, 7.495)
 
 [node name="Sky" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 z_index = -1
 anchors_preset = -1
 anchor_right = 0.112167
