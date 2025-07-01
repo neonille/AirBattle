@@ -1,49 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://cspookngc1ycl"]
+[gd_scene load_steps=8 format=3 uid="uid://cspookngc1ycl"]
 
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scenes/canon.gd" id="3_8gbba"]
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
-colors = PackedColorArray(0, 0, 0.470588, 1, 0, 0.772549, 1, 1)
+colors = PackedColorArray(0, 0, 0.470588, 1, 2.11775e-06, 0.744115, 0.963751, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h2yge"]
 gradient = SubResource("Gradient_0xm2m")
 fill_from = Vector2(0.527523, 0)
 fill_to = Vector2(0.5, 1)
 
+[sub_resource type="Gradient" id="Gradient_8gbba"]
+colors = PackedColorArray(0, 0, 0, 1, 0.172833, 0.172833, 0.172833, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jjvhh"]
+gradient = SubResource("Gradient_8gbba")
+fill_from = Vector2(0.513761, 1)
+fill_to = Vector2(0.555046, 0)
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Menu" type="Node" parent="."]
+[node name="Menu" type="Node2D" parent="."]
 
-[node name="Game" type="Node" parent="."]
+[node name="Game" type="Node2D" parent="."]
 
-[node name="CanonBase" type="Sprite2D" parent="Game"]
+[node name="Base" type="Sprite2D" parent="Game"]
 z_index = 1
 texture_filter = 1
-position = Vector2(105, 105)
+position = Vector2(128, 136)
 texture = ExtResource("1_bo1nx")
 
-[node name="CanonHead" type="Sprite2D" parent="Game"]
+[node name="Canon" type="Sprite2D" parent="Game"]
 texture_filter = 1
-position = Vector2(105, 113)
+position = Vector2(128, 144)
 scale = Vector2(1, 0.75)
 texture = ExtResource("2_8gbba")
 offset = Vector2(0, -7.99999)
-
-[node name="Marker2D" type="Marker2D" parent="Game/CanonHead"]
-position = Vector2(0, -5.33333)
-scale = Vector2(1, 1.33333)
+script = ExtResource("3_8gbba")
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
-position = Vector2(104, 56)
-zoom = Vector2(5.68, 5.68)
-metadata/_edit_lock_ = true
+position = Vector2(128, 72)
+zoom = Vector2(7.495, 7.495)
 
-[node name="TextureRect" type="TextureRect" parent="Game"]
+[node name="Sky" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 z_index = -1
-offset_left = 3.0
-offset_top = -1.0
-offset_right = 205.0
-offset_bottom = 113.0
+anchors_preset = -1
+anchor_right = 0.112167
+anchor_bottom = 0.110778
+offset_right = 256.0
+offset_bottom = 144.0
 texture = SubResource("GradientTexture2D_h2yge")
-metadata/_edit_lock_ = true
+
+[node name="Sky2" type="TextureRect" parent="."]
+z_index = -2
+anchors_preset = -1
+anchor_right = 0.112167
+anchor_bottom = 0.110778
+offset_right = 256.0
+offset_bottom = 144.0
+texture = SubResource("GradientTexture2D_jjvhh")
