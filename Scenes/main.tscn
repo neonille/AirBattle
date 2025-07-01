@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
-[ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scenes/canon.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scripts/canon.gd" id="3_8gbba"]
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
 colors = PackedColorArray(0, 0, 0.470588, 1, 2.11775e-06, 0.744115, 0.963751, 1)
