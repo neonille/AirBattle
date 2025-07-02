@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cspookngc1ycl"]
+[gd_scene load_steps=9 format=3 uid="uid://cspookngc1ycl"]
 
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scripts/canon.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://dshptkst7oeml" path="res://Scripts/AudioPlayer.gd" id="4_jjvhh"]
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
 colors = PackedColorArray(0, 0, 0.470588, 1, 2.11775e-06, 0.744115, 0.963751, 1)
@@ -61,3 +62,8 @@ anchor_bottom = 0.110778
 offset_right = 256.0
 offset_bottom = 144.0
 texture = SubResource("GradientTexture2D_jjvhh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.351
+autoplay = true
+script = ExtResource("4_jjvhh")
