@@ -23,28 +23,6 @@ fill_to = Vector2(0.555046, 0)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Menu" type="Node2D" parent="."]
-
-[node name="Game" type="Node2D" parent="."]
-
-[node name="Base" type="Sprite2D" parent="Game"]
-z_index = 1
-texture_filter = 1
-position = Vector2(128, 136)
-texture = ExtResource("1_bo1nx")
-
-[node name="Canon" type="Sprite2D" parent="Game"]
-texture_filter = 1
-position = Vector2(128, 144)
-scale = Vector2(1, 0.75)
-texture = ExtResource("2_8gbba")
-offset = Vector2(0, -7.99999)
-script = ExtResource("3_8gbba")
-
-[node name="Camera2D" type="Camera2D" parent="Game"]
-position = Vector2(128, 72)
-zoom = Vector2(7.495, 7.495)
-
 [node name="Sky" type="TextureRect" parent="."]
 z_index = -1
 anchors_preset = -1
@@ -67,3 +45,21 @@ texture = SubResource("GradientTexture2D_jjvhh")
 volume_db = -10.351
 autoplay = true
 script = ExtResource("4_jjvhh")
+
+[node name="Base" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(128, 136)
+texture = ExtResource("1_bo1nx")
+
+[node name="Canon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(128, 144)
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_8gbba")
+offset = Vector2(0, -7.99999)
+script = ExtResource("3_8gbba")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, 72)
+zoom = Vector2(7.495, 7.495)

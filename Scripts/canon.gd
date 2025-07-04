@@ -7,21 +7,17 @@ var currentDir = 1
 var audio: AudioPlayer
 
 func _ready() -> void:
-	audio = get_node("../../AudioStreamPlayer") as AudioPlayer
+	audio = get_node("../AudioStreamPlayer") as AudioPlayer
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
-		RotateCanon(+1)
+		rotateCanon(+1)
 	if Input.is_action_just_pressed("ui_left"):
-		RotateCanon(-1)
+		rotateCanon(-1)
 	if Input.is_action_just_pressed("ui_accept"):
-		var bull = bullet.instantiate() as Bullet
-		get_parent().add_child(bull)
-		bull.position = position
-		bull.direction = Vector2(directions[currentDir],-1)
-		audio.Play("Shoot1")
+		shoot()
 		
-func RotateCanon(dir):
+func rotateCanon(dir):
 	if currentDir == 0 and dir == -1:
 		return
 	if currentDir == 2 and dir == +1:
@@ -30,3 +26,13 @@ func RotateCanon(dir):
 	rotation_degrees =  rotations[currentDir]
 	audio.Play("canonmove")
 	
+func shoot():
+	if checkIfCanShoot() == null:
+		var bull = bullet.instantiate() as Bullet
+		get_parent().add_child(bull)
+		bull.position = position
+		bull.direction = Vector2(directions[currentDir],-1)
+		audio.Play("Shoot1")
+	
+func checkIfCanShoot():
+	return get_node_or_null("../Bullet")
