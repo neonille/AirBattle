@@ -23,6 +23,10 @@ window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
+[global_group]
+
+BulletGroup=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

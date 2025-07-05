@@ -27,12 +27,14 @@ func rotateCanon(dir):
 	audio.Play("canonmove")
 	
 func shoot():
-	if checkIfCanShoot() == null:
+	if checkIfCanShoot() == true:
 		var bull = bullet.instantiate() as Bullet
 		get_parent().add_child(bull)
 		bull.position = position
+		bull.position.y -= 1
 		bull.direction = Vector2(directions[currentDir],-1)
 		audio.Play("Shoot1")
 	
 func checkIfCanShoot():
-	return get_node_or_null("../Bullet")
+	var bullets = get_tree().get_nodes_in_group("BulletGroup")
+	return bullets.size() < 2

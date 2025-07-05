@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cspookngc1ycl"]
+[gd_scene load_steps=12 format=3 uid="uid://cspookngc1ycl"]
 
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scripts/canon.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://dshptkst7oeml" path="res://Scripts/AudioPlayer.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://darsk4ayytmby" path="res://Art/bomber1.png" id="5_kry3j"]
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
 colors = PackedColorArray(0, 0, 0.470588, 1, 2.11775e-06, 0.744115, 0.963751, 1)
@@ -20,6 +21,14 @@ colors = PackedColorArray(0, 0, 0, 1, 0.172833, 0.172833, 0.172833, 1)
 gradient = SubResource("Gradient_8gbba")
 fill_from = Vector2(0.513761, 1)
 fill_to = Vector2(0.555046, 0)
+
+[sub_resource type="Gradient" id="Gradient_jjvhh"]
+colors = PackedColorArray(0, 0.823529, 0, 1, 0, 0.662745, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kry3j"]
+gradient = SubResource("Gradient_jjvhh")
+fill_from = Vector2(0.555556, 1)
+fill_to = Vector2(0.495726, 0.0769231)
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,12 +58,12 @@ script = ExtResource("4_jjvhh")
 [node name="Base" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-position = Vector2(128, 136)
+position = Vector2(128, 134)
 texture = ExtResource("1_bo1nx")
 
 [node name="Canon" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(128, 144)
+position = Vector2(128, 142)
 scale = Vector2(1, 0.75)
 texture = ExtResource("2_8gbba")
 offset = Vector2(0, -7.99999)
@@ -63,3 +72,14 @@ script = ExtResource("3_8gbba")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(128, 72)
 zoom = Vector2(7.495, 7.495)
+
+[node name="Grass" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(128, 141.5)
+scale = Vector2(4, 0.078125)
+texture = SubResource("GradientTexture2D_kry3j")
+
+[node name="Bomber1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(264, 72)
+texture = ExtResource("5_kry3j")
