@@ -10,7 +10,7 @@ var sounds = [
 	preload("res://Sound/Shoot1.wav")
 ]
 
-func Play(name):
-	var res = "res://Sound/{0}.wav".format([name])
+func Play(soundFileName):
+	var res = "res://Sound/{0}.wav".format([soundFileName])
 	stream = load(res)
 	play()

@@ -28,11 +28,11 @@ func rotateCanon(dir):
 	
 func shoot():
 	if checkIfCanShoot() == true:
-		var bull = bullet.instantiate() as Bullet
-		get_parent().add_child(bull)
-		bull.position = position
-		bull.position.y -= 1
-		bull.direction = Vector2(directions[currentDir],-1)
+		var bulletInstance = bullet.instantiate() as Bullet
+		get_parent().add_child(bulletInstance)
+		bulletInstance.position = position
+		bulletInstance.position.y -= 1
+		bulletInstance.direction = Vector2(directions[currentDir],-1)
 		audio.Play("Shoot1")
 	
 func checkIfCanShoot():
