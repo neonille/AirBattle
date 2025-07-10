@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qmdfe22nlsc6"]
+[gd_scene load_steps=6 format=3 uid="uid://qmdfe22nlsc6"]
 
 [ext_resource type="Texture2D" uid="uid://darsk4ayytmby" path="res://Art/bomber1.png" id="1_5ccyj"]
 [ext_resource type="Script" uid="uid://du1c0ddjtwebh" path="res://Scripts/bomber_1.gd" id="1_mak6s"]
 [ext_resource type="Texture2D" uid="uid://eglr2jfkhswx" path="res://Art/bomb.png" id="2_mak6s"]
+[ext_resource type="Script" uid="uid://cmi30r3xgqit7" path="res://Scripts/bomb.gd" id="4_h4gx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mak6s"]
 size = Vector2(17, 8)
@@ -11,19 +12,20 @@ size = Vector2(17, 8)
 script = ExtResource("1_mak6s")
 speed = 50
 
-[node name="Bomber1Sprite" type="Sprite2D" parent="."]
+[node name="Bomber1" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("1_5ccyj")
 
-[node name="Area2D" type="Area2D" parent="Bomber1Sprite"]
+[node name="Area2D" type="Area2D" parent="Bomber1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomber1Sprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomber1/Area2D"]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_mak6s")
 
-[node name="BombSprite" type="Sprite2D" parent="."]
+[node name="Bomb" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(13, 7)
+position = Vector2(12, 7)
 texture = ExtResource("2_mak6s")
+script = ExtResource("4_h4gx8")
 
-[connection signal="area_entered" from="Bomber1Sprite/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Bomber1/Area2D" to="." method="_on_area_2d_area_entered"]

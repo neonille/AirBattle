@@ -1,30 +1,54 @@
 extends Node2D
 
-const headingLeft = -1
-const headingRight = 1
+enum HeadingDirections {
+	LEFT = -1,
+	RIGHT = 1
+}
+
+enum GoAroundSpots {
+	LEFT = 8 * 3 * -1,
+	RIGHT = 8 * 35
+}
 
 @export var speed = 100
 var heading = 0
-var targetGoAround = Vector2()
+var targetGoAroundSpot = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var bomb = get_node("BombSprite") as Sprite2D
+	var bomb = get_node("Bomb") as Sprite2D
 	bomb.position.y += 2
 	
 	var xPos = position.x
 	if xPos > 0:
-		heading = headingLeft
+		updateHeading(HeadingDirections.LEFT, false)
 	else:
-		heading = headingRight
-		scale.x *= -1
+		updateHeading(HeadingDirections.RIGHT, true)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var headingVector = Vector2(heading, 0)
 	position += delta * speed * headingVector
+	checkGoAround()
+	
+	
+func updateHeading(target: HeadingDirections, shouldFlip: bool):
+	if target == HeadingDirections.LEFT:
+		heading = HeadingDirections.LEFT
+		targetGoAroundSpot = GoAroundSpots.LEFT
+	else:
+		heading = HeadingDirections.RIGHT
+		targetGoAroundSpot = GoAroundSpots.RIGHT
+	if shouldFlip:
+		flip()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("BulletGroup"):
 		queue_free()
+
+func flip():
+	scale.x *= -1
+
+func checkGoAround():
+	if heading == HeadingDirections.RIGHT and position.x >= GoAroundSpots.RIGHT:
+		updateHeading(HeadingDirections.LEFT, true)
+	if heading == HeadingDirections.LEFT and position.x <= GoAroundSpots.LEFT:
+		updateHeading(HeadingDirections.RIGHT, true)
