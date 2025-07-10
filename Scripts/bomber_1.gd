@@ -13,11 +13,9 @@ enum GoAroundSpots {
 @export var speed = 100
 var heading = 0
 var targetGoAroundSpot = 0
+var bomblevel = 0
 
-func _ready() -> void:
-	var bomb = get_node("Bomb") as Sprite2D
-	bomb.position.y += 2
-	
+func _ready() -> void:	
 	var xPos = position.x
 	if xPos > 0:
 		updateHeading(HeadingDirections.LEFT, false)
@@ -50,5 +48,12 @@ func flip():
 func checkGoAround():
 	if heading == HeadingDirections.RIGHT and position.x >= GoAroundSpots.RIGHT:
 		updateHeading(HeadingDirections.LEFT, true)
+		AdvanceBombLevel()
 	if heading == HeadingDirections.LEFT and position.x <= GoAroundSpots.LEFT:
 		updateHeading(HeadingDirections.RIGHT, true)
+		AdvanceBombLevel()
+
+func AdvanceBombLevel():
+	var bomb = $Bomb as Bomb
+	bomb.position.y += 1
+	bomblevel += 1
