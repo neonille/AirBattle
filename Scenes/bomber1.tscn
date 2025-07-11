@@ -10,7 +10,6 @@ size = Vector2(17, 8)
 
 [node name="Bomber1" type="Node2D"]
 script = ExtResource("1_mak6s")
-speed = 50
 
 [node name="Bomber1" type="Sprite2D" parent="."]
 position = Vector2(8, 8)

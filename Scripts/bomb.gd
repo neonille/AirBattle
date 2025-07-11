@@ -10,3 +10,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func release():
+	var pos = global_position
+	var root = get_tree().get_current_scene()
+	get_parent().remove_child(self)
+	root.add_child(self)
+	position = pos

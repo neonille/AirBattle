@@ -80,4 +80,4 @@ scale = Vector2(4, 0.078125)
 texture = SubResource("GradientTexture2D_kry3j")
 
 [node name="Bomber1" parent="." instance=ExtResource("5_kry3j")]
-position = Vector2(256, 16)
+position = Vector2(-32, 24)
