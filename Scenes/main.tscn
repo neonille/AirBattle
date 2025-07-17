@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cspookngc1ycl"]
+[gd_scene load_steps=15 format=3 uid="uid://cspookngc1ycl"]
 
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
@@ -29,6 +29,15 @@ colors = PackedColorArray(0, 0.823529, 0, 1, 0, 0.662745, 0, 1)
 gradient = SubResource("Gradient_jjvhh")
 fill_from = Vector2(0.555556, 1)
 fill_to = Vector2(0.495726, 0.0769231)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(125, 15.6484)
+
+[sub_resource type="Gradient" id="Gradient_kry3j"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_21xkr"]
+gradient = SubResource("Gradient_kry3j")
 
 [node name="Node2D" type="Node2D"]
 
@@ -79,5 +88,30 @@ position = Vector2(128, 141.5)
 scale = Vector2(4, 0.078125)
 texture = SubResource("GradientTexture2D_kry3j")
 
+[node name="Town" type="Node" parent="."]
+
+[node name="WestTown" type="Area2D" parent="Town"]
+visible = false
+position = Vector2(56, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/WestTown"]
+position = Vector2(0, -8.17578)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="EastTown" type="Area2D" parent="Town"]
+visible = false
+position = Vector2(200, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/EastTown"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="EvilEmpire" type="Node" parent="."]
+
 [node name="Bomber1" parent="." instance=ExtResource("5_kry3j")]
-position = Vector2(-32, 24)
+position = Vector2(256, 8)
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(128, 3.875)
+scale = Vector2(1, 8.25)
+texture = SubResource("GradientTexture1D_21xkr")

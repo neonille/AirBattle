@@ -1,6 +1,8 @@
-extends Sprite2D
+extends Area2D
 
 class_name Bomb
+
+var released = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,7 +11,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if released:
+		position.y += 0.5
 
 func release():
 	var pos = global_position
@@ -17,3 +20,4 @@ func release():
 	get_parent().remove_child(self)
 	root.add_child(self)
 	position = pos
+	released = true

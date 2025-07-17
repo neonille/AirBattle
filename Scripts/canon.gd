@@ -31,7 +31,7 @@ func shoot():
 		var bulletInstance = bullet.instantiate() as Bullet
 		get_parent().add_child(bulletInstance)
 		bulletInstance.position = position
-		bulletInstance.position.y -= 1
+		bulletInstance.position.y -= 1.7
 		bulletInstance.direction = Vector2(directions[currentDir],-1)
 		audio.Play("Shoot1")
 	

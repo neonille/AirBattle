@@ -12,7 +12,7 @@ enum GoAroundSpots {
 
 const halfTheScreen = 256/2
 
-@export var speed = 100
+var speed = 100
 var heading = 0
 var targetGoAroundSpot = 0
 var bomblevel = 0
@@ -34,11 +34,12 @@ func _process(delta: float) -> void:
 	checkGoAround()
 	
 func setDropPos():
-	var offset = 80
+	var offset = 120
 	bombDropPos = halfTheScreen + (offset * heading)
-	print(bombDropPos)
 			
 func updateHeading(target: HeadingDirections, shouldFlip: bool):
+	if bomblevel == 3:
+		queue_free()
 	if target == HeadingDirections.LEFT:
 		heading = HeadingDirections.LEFT
 		targetGoAroundSpot = GoAroundSpots.LEFT
@@ -66,17 +67,19 @@ func checkGoAround():
 		AdvanceBombLevel()
 
 func checkDropBomb():
-	if hasBomb == false: return
-	if bomblevel == 2 and heading == HeadingDirections.LEFT:
+	if hasBomb == false or bomblevel != 2: return
+	if heading == HeadingDirections.LEFT:
 		if position.x <= bombDropPos:
-			var bomb = $Bomb as Bomb
-			bomb.release()
-			hasBomb = false
-	if bomblevel == 2 and heading == HeadingDirections.RIGHT:
+			dropBomb()
+	if heading == HeadingDirections.RIGHT:
 		if position.x >= bombDropPos:
-			var bomb = $Bomb as Bomb
-			bomb.release()
-			hasBomb = false
+			dropBomb()
+			
+func dropBomb():
+	var bomb = $Bomb as Bomb
+	bomb.release()
+	hasBomb = false
+	bomblevel += 1
 			
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("BulletGroup"):
