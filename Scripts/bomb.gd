@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 		position.y += 0.5
 
 func release():
-	var pos = global_position
-	var root = get_tree().get_current_scene()
+	var root = get_tree().current_scene
+	var globTrans = global_transform
 	get_parent().remove_child(self)
 	root.add_child(self)
-	position = pos
+	global_transform = globTrans
 	released = true

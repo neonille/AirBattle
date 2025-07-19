@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Bomber1
+
 enum HeadingDirections {
 	LEFT = -1,
 	RIGHT = 1
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 	checkGoAround()
 	
 func setDropPos():
-	var offset = 120
+	var offset = (randi_range(1,5) * 20) + 20 # 40 - 120 with 20 interval
 	bombDropPos = halfTheScreen + (offset * heading)
 			
 func updateHeading(target: HeadingDirections, shouldFlip: bool):
@@ -82,5 +84,7 @@ func dropBomb():
 	bomblevel += 1
 			
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name != "Bullet": return
+	
 	if area.get_parent().is_in_group("BulletGroup"):
 		queue_free()

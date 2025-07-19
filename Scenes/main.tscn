@@ -1,10 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cspookngc1ycl"]
+[gd_scene load_steps=16 format=3 uid="uid://cspookngc1ycl"]
 
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scripts/canon.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://dshptkst7oeml" path="res://Scripts/audioPlayer.gd" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://qmdfe22nlsc6" path="res://Scenes/bomber1.tscn" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://bcfrquubgem2w" path="res://Scripts/evil_empire.gd" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://qmdfe22nlsc6" path="res://Scenes/bomber1.tscn" id="6_21xkr"]
+
+[sub_resource type="Gradient" id="Gradient_kry3j"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_21xkr"]
+gradient = SubResource("Gradient_kry3j")
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
 colors = PackedColorArray(0, 0, 0.470588, 1, 2.11775e-06, 0.744115, 0.963751, 1)
@@ -33,13 +40,12 @@ fill_to = Vector2(0.495726, 0.0769231)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
 size = Vector2(125, 15.6484)
 
-[sub_resource type="Gradient" id="Gradient_kry3j"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_21xkr"]
-gradient = SubResource("Gradient_kry3j")
-
 [node name="Node2D" type="Node2D"]
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(128, 3.875)
+scale = Vector2(1, 8.25)
+texture = SubResource("GradientTexture1D_21xkr")
 
 [node name="Sky" type="TextureRect" parent="."]
 z_index = -5
@@ -107,11 +113,11 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="EvilEmpire" type="Node" parent="."]
+script = ExtResource("5_kry3j")
 
-[node name="Bomber1" parent="." instance=ExtResource("5_kry3j")]
-position = Vector2(256, 8)
+[node name="Timer" type="Timer" parent="EvilEmpire"]
 
-[node name="Top" type="Sprite2D" parent="."]
-position = Vector2(128, 3.875)
-scale = Vector2(1, 8.25)
-texture = SubResource("GradientTexture1D_21xkr")
+[node name="Bomber1" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(272, 8)
+
+[connection signal="timeout" from="EvilEmpire/Timer" to="EvilEmpire" method="_on_timer_timeout"]
