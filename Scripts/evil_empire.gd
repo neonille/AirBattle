@@ -20,5 +20,5 @@ func _on_timer_timeout() -> void:
 
 func decideSpawnLane():
 	var noLanesAvailable = lanes.all(func(lane): return lane != null)
-	if noLanesAvailable: return
+	if noLanesAvailable: return null
 	
