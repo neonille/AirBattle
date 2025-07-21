@@ -41,6 +41,8 @@ func setDropPos():
 			
 func updateHeading(target: HeadingDirections, shouldFlip: bool):
 	if bomblevel == 3:
+		var n = get_parent().get_node("EvilEmpire") as EvilEmpire
+		n.clearLane(name)
 		queue_free()
 	if target == HeadingDirections.LEFT:
 		heading = HeadingDirections.LEFT
@@ -55,7 +57,7 @@ func flip():
 	scale.x *= -1
 	
 func AdvanceBombLevel():
-	if hasBomb == false: return
+	if bomblevel == 3: return
 	var bomb = $Bomb as Bomb
 	bomb.position.y += 1
 	bomblevel += 1
@@ -84,7 +86,5 @@ func dropBomb():
 	bomblevel += 1
 			
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name != "Bullet": return
-	
 	if area.get_parent().is_in_group("BulletGroup"):
 		queue_free()

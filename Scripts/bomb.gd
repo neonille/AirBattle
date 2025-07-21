@@ -13,6 +13,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if released:
 		position.y += 0.5
+	if position.y > 200:
+		queue_free()
 
 func release():
 	var root = get_tree().current_scene
