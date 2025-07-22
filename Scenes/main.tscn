@@ -13,7 +13,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_kry3j")
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
-colors = PackedColorArray(0, 0, 0.470588, 1, 1.2514e-06, 0.641939, 0.833231, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.00509031, 0.188667, 0.832808, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h2yge"]
 gradient = SubResource("Gradient_0xm2m")
@@ -89,8 +90,8 @@ zoom = Vector2(7.495, 7.495)
 
 [node name="Grass" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(128, 141.5)
-scale = Vector2(4, 0.078125)
+position = Vector2(128, 142)
+scale = Vector2(4, 0.0625)
 texture = SubResource("GradientTexture2D_kry3j")
 
 [node name="Town" type="Node" parent="."]
