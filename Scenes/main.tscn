@@ -30,7 +30,8 @@ fill_from = Vector2(0.513761, 1)
 fill_to = Vector2(0.555046, 0)
 
 [sub_resource type="Gradient" id="Gradient_jjvhh"]
-colors = PackedColorArray(0, 0.823529, 0, 1, 0, 0.662745, 0, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0.823529, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kry3j"]
 gradient = SubResource("Gradient_jjvhh")
