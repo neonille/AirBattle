@@ -10,11 +10,11 @@ func _ready() -> void:
 	audio = get_node("../AudioStreamPlayer") as AudioPlayer
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("right"):
 		rotateCanon(+1)
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("left"):
 		rotateCanon(-1)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("down"):
 		shoot()
 		
 func rotateCanon(dir):

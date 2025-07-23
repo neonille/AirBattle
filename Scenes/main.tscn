@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://rtfger0kqw42" path="res://Art/canonBase.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bagw6at1l5t0y" path="res://Art/canonHead.png" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://dmcu6bta16ibl" path="res://Scripts/canon.gd" id="3_8gbba"]
-[ext_resource type="Script" uid="uid://dshptkst7oeml" path="res://Scripts/audioPlayer.gd" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://dshptkst7oeml" path="res://Scripts/AudioPlayer.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://bcfrquubgem2w" path="res://Scripts/evil_empire.gd" id="5_kry3j"]
 
 [sub_resource type="Gradient" id="Gradient_kry3j"]
