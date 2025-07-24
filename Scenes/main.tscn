@@ -66,7 +66,12 @@ offset_right = 256.0
 offset_bottom = 144.0
 texture = SubResource("GradientTexture2D_jjvhh")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Sound1" type="AudioStreamPlayer" parent="."]
+volume_db = -10.351
+autoplay = true
+script = ExtResource("4_jjvhh")
+
+[node name="Sound2" type="AudioStreamPlayer" parent="."]
 volume_db = -10.351
 autoplay = true
 script = ExtResource("4_jjvhh")
@@ -117,5 +122,6 @@ shape = SubResource("RectangleShape2D_kry3j")
 script = ExtResource("5_kry3j")
 
 [node name="Timer" type="Timer" parent="EvilEmpire"]
+wait_time = 2.996
 
 [connection signal="timeout" from="EvilEmpire/Timer" to="EvilEmpire" method="_on_timer_timeout"]

@@ -12,9 +12,6 @@ var lanes = [null,null,null,null,null,null]
 func _ready() -> void:
 	timer.start()
 
-func _process(delta: float) -> void:
-	pass
-
 func _on_timer_timeout() -> void:
 	timer.start()
 	var selectedLane = decideSpawnLane()
@@ -32,12 +29,12 @@ func decideSpawnLane():
 	return emptyLanesIndexes[randIndex]
 
 func spawn(lane):
-	var bomber = bomber.instantiate() as Bomber1
-	get_parent().add_child(bomber)
-	lanes[lane] = bomber.name
-	bomber.position = Vector2(leftSpawnX, (lane+1) * 16)
+	var bomberInstance = bomber.instantiate() as Bomber1
+	get_parent().add_child(bomberInstance)
+	lanes[lane] = bomberInstance.name
+	bomberInstance.position = Vector2(leftSpawnX, (lane+1) * 16)
 
-func clearLane(name):
+func clearLane(planeName):
 	for i in lanes.size():
-		if lanes[i] == name:
+		if lanes[i] == planeName:
 			lanes[i] = null

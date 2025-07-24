@@ -14,6 +14,8 @@ enum GoAroundSpots {
 
 const halfTheScreen = 256/2
 
+var sound2: AudioPlayer
+var evilEmpire: EvilEmpire
 var speed = 100
 var heading = 0
 var targetGoAroundSpot = 0
@@ -22,6 +24,8 @@ var bombDropPos = 0
 var hasBomb = true
 
 func _ready() -> void:
+	sound2 = get_node("../Sound2") as AudioPlayer
+	evilEmpire = get_node("../EvilEmpire") as EvilEmpire
 	var xPos = position.x
 	if xPos > 0:
 		updateHeading(HeadingDirections.LEFT, false)
@@ -41,8 +45,7 @@ func setDropPos():
 			
 func updateHeading(target: HeadingDirections, shouldFlip: bool):
 	if bomblevel == 3:
-		var n = get_parent().get_node("EvilEmpire") as EvilEmpire
-		n.clearLane(name)
+		evilEmpire.clearLane(name)
 		queue_free()
 	if target == HeadingDirections.LEFT:
 		heading = HeadingDirections.LEFT
@@ -87,4 +90,6 @@ func dropBomb():
 			
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet"):
+		sound2.Play("explosion1")
+		evilEmpire.clearLane(name)
 		queue_free()
